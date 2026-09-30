@@ -217,7 +217,7 @@ h2 em {
 .hero-card { 
   position: absolute; 
   left: -50px; 
-  bottom: -15px; 
+  bottom: -25px; 
   background: var(--white); 
   padding: 22px 28px; 
   min-width: 210px; 
