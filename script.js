@@ -1,84 +1,103 @@
-document.addEventListener("DOMContentLoaded", () => {
-/* ========================= MOBILE MENU ========================= */
-const menuBtn = document.querySelector(".menu-btn"); const nav = document.querySelector(".nav");
-if (menuBtn && nav) {
-menuBtn.addEventListener("click", () => {
-  nav.classList.toggle("active");
-  menuBtn.classList.toggle("active");
-});
 
-nav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("active");
-    menuBtn.classList.remove("active");
-  });
-});
-}
-/* ========================= FAQ ========================= */
-const faqItems = document.querySelectorAll(".faq-item");
-faqItems.forEach(item => {
-const question = item.querySelector(".faq-question");
+const TELEGRAM_LINK = "https://t.me/dokAmina";
+/* ========================================= ВСЕ КНОПКИ ЗАПИСИ ========================================= */
+document.querySelectorAll(".js-booking").forEach(button => {
+button.addEventListener("click", function(event) {
 
-question.addEventListener("click", () => {
+    event.preventDefault();
 
-  const isActive = item.classList.contains("active");
-
-  faqItems.forEach(otherItem => {
-    otherItem.classList.remove("active");
-  });
-
-  if (!isActive) {
-    item.classList.add("active");
-  }
-
-});
-});
-/* ========================= HEADER SCROLL ========================= */
-const header = document.querySelector(".header");
-window.addEventListener("scroll", () => {
-if (window.scrollY > 50) {
-  header.classList.add("scrolled");
-} else {
-  header.classList.remove("scrolled");
-}
-});
-/* ========================= SMOOTH ANCHOR SCROLL ========================= */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-link.addEventListener("click", function(event) {
-
-  const targetId = this.getAttribute("href");
-
-  if (targetId === "#") return;
-
-  const target = document.querySelector(targetId);
-
-  if (!target) return;
-
-  event.preventDefault();
-
-  target.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-
-});
-});
-/* ========================= SIMPLE REVEAL ANIMATION ========================= */
-const animatedElements = document.querySelectorAll( ".approach-card, .service, .food-item, .about-content" );
-const observer = new IntersectionObserver( entries => {
-  entries.forEach(entry => {
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+    if (TELEGRAM_LINK !== "https://t.me/") {
+        window.open(
+            TELEGRAM_LINK,
+            "_blank",
+            "noopener,noreferrer"
+        );
+    } else {
+        alert("Добавьте Telegram-ссылку Амины в script.js");
     }
 
-  });
+});
+});
+/* ========================================= АККОРДЕОНЫ ========================================= */
+document.querySelectorAll(".accordion-header").forEach(header => {
+header.addEventListener("click", function() {
 
-},
-{
-  threshold: 0.12
-}
+    const item = this.parentElement;
+    const content = item.querySelector(".accordion-content");
+
+    const isOpen = item.classList.contains("active");
+
+    document.querySelectorAll(".accordion-item").forEach(otherItem => {
+
+        if (otherItem !== item) {
+
+            otherItem.classList.remove("active");
+
+            const otherContent =
+                otherItem.querySelector(".accordion-content");
+
+            otherContent.style.maxHeight = null;
+
+        }
+
+    });
+
+
+    if (isOpen) {
+
+        item.classList.remove("active");
+        content.style.maxHeight = null;
+
+    } else {
+
+        item.classList.add("active");
+        content.style.maxHeight =
+            content.scrollHeight + "px";
+
+    }
+
+});
+});
+/* ========================================= АНИМАЦИЯ ПОЯВЛЕНИЯ ========================================= */
+const revealElements = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver( entries => {
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+                revealObserver.unobserve(
+                    entry.target
+                );
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.12
+    }
 );
-animatedElements.forEach(element => { element.classList.add("reveal"); observer.observe(element); });
+revealElements.forEach(element => {
+revealObserver.observe(element);
+});
+/* ========================================= ПЛАВНАЯ ПОЯВЛЯЮЩАЯСЯ ШАПКА ========================================= */
+const header = document.querySelector(".site-header");
+let lastScroll = 0;
+window.addEventListener("scroll", () => {
+const currentScroll = window.scrollY;
+
+if (currentScroll > 100) {
+
+    header.classList.add("scrolled");
+
+} else {
+
+    header.classList.remove("scrolled");
+
+}
+
+lastScroll = currentScroll;
 });
