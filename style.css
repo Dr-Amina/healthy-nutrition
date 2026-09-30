@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+
+  --cream: #f7f1e9;
+
+  --cream-dark: #eee6dc;
+
+  --lilac: #eee7f0;
+
+  --plum: #49374d;
+
+  --plum-light: #735f76;
+
+  --text: #27232a;
+
+  --muted: #726b72;
+
+  --line: #d9d0d4;
+
+  --white: #fffdf9;
+
+}
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+body {
+
+  margin: 0;
+
+  background: var(--cream);
+
+  color: var(--text);
+
+  font-family: "DM Sans", Arial, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+
+}
+
+img {
+
+  display: block;
+
+  width: 100%;
+
+}
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+}
+
+button {
+
+  font: inherit;
+
+}
+
+.top-header {
+
+  min-height: 126px;
+
+  padding: 35px 38px 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--line);
+
+  background: rgba(247, 241, 233, .97);
+
+}
+
+.brand {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+}
+
+.brand-name,
+
+.footer-name {
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 35px;
+
+  line-height: .95;
+
+}
+
+.brand-sub,
+
+.footer-sub {
+
+  font-size: 10px;
+
+  letter-spacing: .14em;
+
+  color: #615a61;
+
+}
+
+.outline-button {
+
+  border: 1px solid var(--plum);
+
+  border-radius: 999px;
+
+  padding: 13px 23px;
+
+  font-size: 14px;
+
+  transition: .25s ease;
+
+}
+
+.outline-button:hover {
+
+  background: var(--plum);
+
+  color: white;
+
+}
+
+/* GENERAL */
+
+.hero,
+
+.cream-section,
+
+.lilac-section {
+
+  padding: 74px 44px;
+
+}
+
+.eyebrow {
+
+  margin-bottom: 40px;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: .15em;
+
+  color: var(--plum);
+
+  text-transform: uppercase;
+
+}
+
+.hero h1,
+
+.cream-section h2,
+
+.lilac-section h2,
+
+.dark-section h2 {
+
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-weight: 400;
+
+  letter-spacing: -.045em;
+
+}
+
+.hero h1 {
+
+  max-width: 850px;
+
+  font-size: clamp(50px, 7vw, 92px);
+
+  line-height: .98;
+
+}
+
+.hero h1 i,
+
+h2 i {
+
+  color: var(--plum-light);
+
+  font-weight: 400;
+
+}
+
+.hero-main-text {
+
+  max-width: 680px;
+
+  margin: 55px 0 24px;
+
+  font-size: 21px;
+
+  line-height: 1.55;
+
+}
+
+.hero-secondary-text {
+
+  max-width: 700px;
+
+  margin: 0 0 38px;
+
+  color: var(--muted);
+
+  font-size: 17px;
+
+  line-height: 1.6;
+
+}
+
+.dark-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 62px;
+
+  padding: 0 35px;
+
+  background: var(--plum);
+
+  color: white;
+
+  font-size: 16px;
+
+  border-radius: 4px;
+
+  transition: .25s ease;
+
+}
+
+.dark-button:hover {
+
+  transform: translateY(-2px);
+
+  background: #392b3d;
+
+}
+
+.credentials {
+
+  display: flex;
+
+  margin-top: 55px;
+
+  border-top: 1px solid var(--line);
+
+  padding-top: 23px;
+
+  max-width: 650px;
+
+}
+
+.credential {
+
+  flex: 1;
+
+  padding-right: 25px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color: #655f65;
+
+}
+
+.credential + .credential {
+
+  border-left: 1px solid var(--line);
+
+  padding-left: 25px;
+
+}
+
+/* PHOTO */
+
+.full-photo {
+
+  padding: 0 44px 75px;
+
+  background: var(--cream);
+
+}
+
+.photo-wrap {
+
+  position: relative;
+
+  height: min(78vh, 760px);
+
+  overflow: hidden;
+
+  border-radius: 3px;
+
+}
+
+.photo-wrap img {
+
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+.photo-gradient {
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+
+    to top,
+
+    rgba(26,18,27,.68),
+
+    rgba(26,18,27,.03) 65%
+
+  );
+
+}
+
+.photo-caption {
+
+  position: absolute;
+
+  left: 35px;
+
+  bottom: 30px;
+
+  color: white;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(34px, 5vw, 65px);
+
+  line-height: 1;
+
+}
+
+.photo-caption small {
+
+  display: block;
+
+  margin-top: 25px;
+
+  font-family: "DM Sans", Arial, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: .08em;
+
+}
+
+/* SECTIONS */
+
+.cream-section {
+
+  background: var(--cream);
+
+}
+
+.lilac-section {
+
+  background: var(--lilac);
+
+}
+
+.cream-section h2,
+
+.lilac-section h2 {
+
+  font-size: clamp(46px, 6vw, 78px);
+
+  line-height: .99;
+
+}
+
+.approach > p {
+
+  max-width: 720px;
+
+  margin: 45px 0 0;
+
+  font-size: 18px;
+
+  line-height: 1.7;
