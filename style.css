@@ -694,7 +694,7 @@ h2 em {
   } 
  
   .service-price { 
-    display: none; 
+   display: block;. 
   } 
  
   .service-arrow { 
